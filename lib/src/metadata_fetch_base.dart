@@ -1,7 +1,8 @@
 import 'dart:convert';
+
 import 'package:html/dom.dart';
-import 'package:http/http.dart' as http;
 import 'package:html/parser.dart' as parser;
+import 'package:http/http.dart' as http;
 import 'package:metadata_fetch/metadata_fetch.dart';
 import 'package:metadata_fetch/src/parsers/parsers.dart';
 import 'package:metadata_fetch/src/utils/util.dart';
@@ -19,7 +20,7 @@ Future<Metadata> extract(String url) async {
   defaultOutput.description = url;
 
   // Make our network call
-  final response = await http.get(url);
+  final response = await http.get(Uri.dataFromString(url));
 
   if (response.headers['content-type'].startsWith(r'image/')) {
     defaultOutput.title = '';

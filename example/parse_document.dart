@@ -1,9 +1,9 @@
-import 'package:metadata_fetch/metadata_fetch.dart';
 import 'package:http/http.dart' as http;
+import 'package:metadata_fetch/metadata_fetch.dart';
 
 void main() async {
   var url = 'https://flutter.dev';
-  var response = await http.get(url);
+  var response = await http.get(Uri.dataFromString(url));
   var document = responseToDocument(response);
 
   var data = MetadataParser.parse(document);
